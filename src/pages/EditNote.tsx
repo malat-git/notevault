@@ -7,6 +7,8 @@ const labelClass = 'block text-sm font-medium text-slate-700'
 const fieldClass =
   'mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200'
 
+const YEARS = [1, 2, 3, 4]
+
 function parseTags(text: string) {
   const tags = text
     .split(',')
@@ -26,7 +28,7 @@ export default function EditNote() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryId, setCategoryId] = useState('')
-  const [semester, setSemester] = useState('')
+  const [year, setYear] = useState('')
   const [unit, setUnit] = useState('')
   const [tagsText, setTagsText] = useState('')
   const [status, setStatus] = useState('pending')
@@ -59,7 +61,7 @@ export default function EditNote() {
         setTitle(n.title as string)
         setDescription((n.description as string | null) ?? '')
         setCategoryId(n.category_id ? String(n.category_id) : '')
-        setSemester(n.semester ? String(n.semester) : '')
+        setYear(n.semester ? String(n.semester) : '')
         setUnit((n.unit as string | null) ?? '')
         setTagsText(((n.tags as string[] | null) ?? []).join(', '))
         setStatus(n.status as string)
@@ -90,7 +92,7 @@ export default function EditNote() {
         title: cleanTitle,
         description: description.trim() || null,
         category_id: categoryId ? Number(categoryId) : null,
-        semester: semester ? Number(semester) : null,
+        semester: year ? Number(year) : null,
         unit: unit.trim() || null,
         tags: parseTags(tagsText),
         status,
@@ -193,19 +195,19 @@ export default function EditNote() {
               </select>
             </div>
             <div>
-              <label htmlFor="semester" className={labelClass}>
-                Semester
+              <label htmlFor="year" className={labelClass}>
+                Year
               </label>
               <select
-                id="semester"
-                value={semester}
-                onChange={(e) => setSemester(e.target.value)}
+                id="year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
                 className={fieldClass}
               >
                 <option value="">Not specified</option>
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-                  <option key={s} value={s}>
-                    Semester {s}
+                {YEARS.map((y) => (
+                  <option key={y} value={y}>
+                    Year {y}
                   </option>
                 ))}
               </select>

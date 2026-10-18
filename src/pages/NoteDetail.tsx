@@ -239,7 +239,7 @@ export default function NoteDetail() {
         )}
         {note.semester && (
           <span className="rounded-full bg-slate-200 px-3 py-1 text-slate-700">
-            Semester {note.semester}
+                        Year {note.semester}
           </span>
         )}
         {note.unit && (
