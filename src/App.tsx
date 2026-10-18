@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import Library from './pages/Library'
 import ComingSoon from './pages/ComingSoon'
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/library" element={<Library />} />
           <Route path="*" element={<ComingSoon />} />
         </Routes>
       </main>
