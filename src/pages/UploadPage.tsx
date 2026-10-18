@@ -9,6 +9,8 @@ const MAX_FILES = 10
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
+const YEARS = [1, 2, 3, 4]
+
 // Allowed file extensions and their official file types
 const ALLOWED: Record<string, string> = {
   pdf: 'application/pdf',
@@ -129,7 +131,7 @@ export default function UploadPage() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryId, setCategoryId] = useState('')
-  const [semester, setSemester] = useState('')
+  const [year, setYear] = useState('')
   const [unit, setUnit] = useState('')
   const [tagsText, setTagsText] = useState('')
   const [items, setItems] = useState<UploadItem[]>([])
@@ -246,7 +248,7 @@ export default function UploadPage() {
           title: cleanTitle,
           description: description.trim() || null,
           category_id: categoryId ? Number(categoryId) : null,
-          semester: semester ? Number(semester) : null,
+          semester: year ? Number(year) : null,
           unit: unit.trim() || null,
           tags: parseTags(tagsText),
           status: 'pending',
@@ -307,7 +309,7 @@ export default function UploadPage() {
       setTitle('')
       setDescription('')
       setCategoryId('')
-      setSemester('')
+      setYear('')
       setUnit('')
       setTagsText('')
       setItems([])
@@ -430,19 +432,19 @@ export default function UploadPage() {
               </select>
             </div>
             <div>
-              <label htmlFor="semester" className={labelClass}>
-                Semester
+              <label htmlFor="year" className={labelClass}>
+                Year
               </label>
               <select
-                id="semester"
-                value={semester}
-                onChange={(e) => setSemester(e.target.value)}
+                id="year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
                 className={fieldClass}
               >
                 <option value="">Not specified</option>
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-                  <option key={s} value={s}>
-                    Semester {s}
+                {YEARS.map((y) => (
+                  <option key={y} value={y}>
+                    Year {y}
                   </option>
                 ))}
               </select>

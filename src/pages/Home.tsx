@@ -7,6 +7,8 @@ import NoteCard from '../components/NoteCard'
 const NOTE_COLUMNS =
   'id, title, description, semester, unit, tags, download_count, created_at, categories(name, slug), note_files(file_type)'
 
+const YEARS = [1, 2, 3, 4]
+
 function NoteSection({ title, notes, emptyText }: { title: string; notes: Note[]; emptyText: string }) {
   return (
     <section className="mt-10">
@@ -102,15 +104,15 @@ export default function Home() {
       )}
 
       <section className="mt-8">
-        <h2 className="text-xl font-bold text-slate-800">Browse by semester</h2>
+        <h2 className="text-xl font-bold text-slate-800">Browse by year</h2>
         <div className="mt-3 flex flex-wrap gap-2">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
+          {YEARS.map((y) => (
             <Link
-              key={s}
-              to={`/library?semester=${s}`}
+              key={y}
+              to={`/library?semester=${y}`}
               className="rounded-full border border-sky-200 bg-white px-4 py-1.5 text-sm font-medium text-sky-800 hover:bg-sky-50"
             >
-              Semester {s}
+              Year {y}
             </Link>
           ))}
         </div>

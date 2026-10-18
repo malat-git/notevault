@@ -6,6 +6,8 @@ import NoteCard from '../components/NoteCard'
 
 const PAGE_SIZE = 12
 
+const YEARS = [1, 2, 3, 4]
+
 const FILE_TYPE_OPTIONS = [
   { value: 'pdf', label: 'PDF', extensions: ['pdf'] },
   { value: 'ppt', label: 'PPT / PPTX', extensions: ['ppt', 'pptx'] },
@@ -209,12 +211,12 @@ export default function Library() {
           value={semester}
           onChange={(e) => updateParams({ semester: e.target.value })}
           className={fieldClass}
-          aria-label="Filter by semester"
+          aria-label="Filter by year"
         >
-          <option value="">All semesters</option>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-            <option key={s} value={s}>
-              Semester {s}
+          <option value="">All years</option>
+          {YEARS.map((y) => (
+            <option key={y} value={y}>
+              Year {y}
             </option>
           ))}
         </select>

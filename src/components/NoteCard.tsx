@@ -21,7 +21,7 @@ export default function NoteCard({ note }: { note: Note }) {
       </h3>
       <p className="mt-1 text-sm text-sky-700">
         {note.categories?.name ?? 'Uncategorised'}
-        {note.semester ? ` · Semester ${note.semester}` : ''}
+        {note.semester ? ` · Year ${note.semester}` : ''}
       </p>
       {note.description && (
         <p className="mt-2 line-clamp-2 break-words text-sm text-slate-600">
