@@ -1,9 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import Library from './pages/Library'
 import NoteDetail from './pages/NoteDetail'
+import AdminLogin from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
 import ComingSoon from './pages/ComingSoon'
 
 export default function App() {
@@ -15,6 +18,15 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/library" element={<Library />} />
           <Route path="/note/:id" element={<NoteDetail />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute allow={['admin', 'contributor']}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<ComingSoon />} />
         </Routes>
       </main>
