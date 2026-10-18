@@ -99,7 +99,7 @@ export default function AdminDashboard() {
         </button>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Link to="/admin/upload" className={linkCard}>
           Upload notes
         </Link>
@@ -110,6 +110,9 @@ export default function AdminDashboard() {
             </Link>
             <Link to="/admin/categories" className={linkCard}>
               Manage subjects
+            </Link>
+            <Link to="/admin/reports" className={linkCard}>
+              Reports{stats && stats.open_reports > 0 ? ` (${stats.open_reports})` : ''}
             </Link>
           </>
         )}
@@ -139,6 +142,16 @@ export default function AdminDashboard() {
             >
               {stats.pending} note{stats.pending === 1 ? '' : 's'} waiting for your approval.
               Review now &rarr;
+            </Link>
+          )}
+
+          {stats.open_reports > 0 && (
+            <Link
+              to="/admin/reports"
+              className="mt-3 block rounded-lg bg-red-50 p-4 font-medium text-red-800 hover:bg-red-100"
+            >
+              {stats.open_reports} open report{stats.open_reports === 1 ? '' : 's'}. Review now
+              &rarr;
             </Link>
           )}
 
