@@ -16,3 +16,26 @@ export interface Note {
   categories: { name: string; slug: string } | null
   note_files: { file_type: string }[]
 }
+
+export interface NoteFile {
+  id: string
+  storage_path: string
+  file_name: string
+  file_type: string
+  file_size: number
+}
+
+export interface NoteWithFiles {
+  id: string
+  title: string
+  description: string | null
+  semester: number | null
+  unit: string | null
+  tags: string[]
+  download_count: number
+  created_at: string
+  category_id: number | null
+  status: string
+  categories: { name: string; slug: string } | null
+  note_files: NoteFile[]
+}
