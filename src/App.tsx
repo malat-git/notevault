@@ -1,8 +1,20 @@
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import ComingSoon from './pages/ComingSoon'
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-sky-50 flex flex-col items-center justify-center p-6">
-      <h1 className="text-4xl font-bold text-sky-800">NoteVault</h1>
-      <p className="mt-2 text-slate-600">Your Notes, Everyone's Knowledge.</p>
+    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-800">
+      <Navbar />
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<ComingSoon />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   )
 }
