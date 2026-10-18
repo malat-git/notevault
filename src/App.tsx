@@ -7,6 +7,7 @@ import Library from './pages/Library'
 import NoteDetail from './pages/NoteDetail'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+import UploadPage from './pages/UploadPage'
 import ComingSoon from './pages/ComingSoon'
 
 export default function App() {
@@ -24,6 +25,14 @@ export default function App() {
             element={
               <ProtectedRoute allow={['admin', 'contributor']}>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/upload"
+            element={
+              <ProtectedRoute allow={['admin', 'contributor']}>
+                <UploadPage />
               </ProtectedRoute>
             }
           />

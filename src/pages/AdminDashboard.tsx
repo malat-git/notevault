@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 export default function AdminDashboard() {
@@ -22,9 +23,18 @@ export default function AdminDashboard() {
         </button>
       </div>
 
+      <div className="mt-6">
+        <Link
+          to="/admin/upload"
+          className="inline-block rounded-lg bg-sky-700 px-5 py-3 font-semibold text-white hover:bg-sky-800"
+        >
+          Upload notes
+        </Link>
+      </div>
+
       <p className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500">
-        Uploads, note management, categories and statistics will appear here in the
-        next phases.
+        Note management, approvals, categories and statistics will appear here in the
+        next phase.
       </p>
     </div>
   )
