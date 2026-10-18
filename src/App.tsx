@@ -8,6 +8,9 @@ import NoteDetail from './pages/NoteDetail'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 import UploadPage from './pages/UploadPage'
+import ManageNotes from './pages/ManageNotes'
+import EditNote from './pages/EditNote'
+import ManageCategories from './pages/ManageCategories'
 import ComingSoon from './pages/ComingSoon'
 
 export default function App() {
@@ -33,6 +36,30 @@ export default function App() {
             element={
               <ProtectedRoute allow={['admin', 'contributor']}>
                 <UploadPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/notes"
+            element={
+              <ProtectedRoute allow={['admin']}>
+                <ManageNotes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/notes/:id/edit"
+            element={
+              <ProtectedRoute allow={['admin']}>
+                <EditNote />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/categories"
+            element={
+              <ProtectedRoute allow={['admin']}>
+                <ManageCategories />
               </ProtectedRoute>
             }
           />
